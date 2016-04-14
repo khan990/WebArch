@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <servlet-mapping>
+        <servlet-name>Follow</servlet-name>
+        <url-pattern>/follow</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Unfollow</servlet-name>
+        <url-pattern>/unfollow</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Post</servlet-name>
+        <url-pattern>/post</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <!-- pictures being saved in directory (submit_register.jsp) -->
+    <context-param>
+        <description>Location to store uploaded file</description>
+        <param-name>file-upload</param-name>
+        <param-value>img\</param-value>
+    </context-param>
+    <!-- Servlet for submission of form. this is needed because of (enctype="multipart/form-data") form -->
+    <servlet>
+        <servlet-name>submit_register</servlet-name>
+        <servlet-class>src.Submit_Register</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Follow</servlet-name>
+        <servlet-class>src.Follow</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Unfollow</servlet-name>
+        <servlet-class>src.Unfollow</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Post</servlet-name>
+        <servlet-class>src.Post</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>submit_register</servlet-name>
+        <url-pattern>/submit_register</url-pattern>
+    </servlet-mapping>
+    <!-- Servlet provides latest 10 tweets of followees to main.jsp <div> -->
+    <servlet>
+        <servlet-name>firsttweets</servlet-name>
+        <servlet-class>src.FirstTweets</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>firsttweets</servlet-name>
+        <url-pattern>/firsttweets</url-pattern>
+    </servlet-mapping>
+    <!-- Servlet provide tweets of followees posted on realtime. -->
+    <servlet>
+        <servlet-name>ajaxing</servlet-name>
+        <servlet-class>src.AjaxingLatestTweets</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ajaxing</servlet-name>
+        <url-pattern>/ajaxing</url-pattern>
+    </servlet-mapping>
+    <!-- Servlet provides suggestion for type ahead of profile names... -->
+    <servlet>
+        <servlet-name>ProfileSearch</servlet-name>
+        <servlet-class>src.ProfileSearch</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProfileSearch</servlet-name>
+        <url-pattern>/ProfileSearch</url-pattern>
+    </servlet-mapping>
+</web-app>
